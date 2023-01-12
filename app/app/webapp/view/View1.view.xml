@@ -1,0 +1,97 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="app.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Wizard id="_IDGenWizard1">
+                <WizardStep validated="true" id="_IDGenWizardStep1">
+                    <form:SimpleForm id="_IDGenSimpleForm1">
+                        <Label id="_IDGenLabel2" text="Title" />
+                        <Input id="_IDGenInput1" value="{localModel>/title}" />
+                        <Label id="_IDGenLabel3" text="Stock" />
+                        <Input type="Number" id="_IDGenInput2" value="{localModel>/stock}" />
+                        <Label id="_IDGenLabel1" text="ID" />
+                        <Input type="Number" id="_IDGenInput3" value="{localModel>/ID}" />
+                        <Label id="_IDdummy" />
+                        <Button id="_IDGenButton4" text="Multi Create Addition" press="addToArray" />
+                        <Button id="_IDGenButton5" text="Multi Create Save" press=".saveArray" />
+                        <Label id="_IDdummyHeader" text="Headers and Parameter" />
+                        <Button id="_IDGenButton7" type="Emphasized" text="Headers and Parameter" press="checkHeaderAndModelParameters" />
+                        <Button id="_IDGenButton10" text="Filtering Data Controller" press=".Filtering" />
+                        <Label id="_IDdummyFunctions" text="Function" />
+                        <Button id="_IDGenButton11" text="Function Import" press=".FunctionImport" />
+                        <Button id="_IDGenButton12" text="Function Import Parameter and retrun Array" press=".FunctionImportObj" />
+                        <Label id="_IDGenLabel4" text="Create Scenerio's" />
+                        <Button id="_IDGenButton1001" text="With UpdateGroupId Batch" press="multipleCreateUsingUpdateId" />
+                        <Label id="_IDGenLabel44" text="Etag Correlation Match" />
+                        <Button id="_IDGenButton10014" text="With UpdateGroupId Batch" press="getETagCorrelation" />
+                    </form:SimpleForm>
+                </WizardStep>
+                <WizardStep title="Books" validated="true" id="_IDGenWizardStep2">
+                    <Table id="idParamTable" mode="MultiSelect" items="{path:'/Books',parameters: {
+									$count: true,
+									$$updateGroupId : 'peopleGroup'
+								},sorter: { path: 'ID', descending: false , group:'.getGroup' }, groupHeaderFactory: '.getGroupHeader'}">
+                        <headerToolbar>
+                            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                                <Button id="_IDGenButton2" text="Get Data" press="getTotalData" />
+                                <Button id="_IDGenButton6" text="Delete Multiple Data" press="deleteMultipleData" />
+                                <Button id="_IDGenButton3" text="Delete" press="onItemDelete" />
+                                <Button id="_IDGenButton1" text="Create" press="generateNew" />
+                                <Button id="_IDGenButton1000" text="Create with List Id" press="generateNewList" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column id="idCol">
+                                <Text id="paramId" text="title" />
+                            </Column>
+                            <Column id="descCol">
+                                <Text id="description" text="stock" />
+                            </Column>
+                            <Column id="mandtCol">
+                                <Text id="mandt" text="ID" />
+                            </Column>
+                        </columns>
+                        <ColumnListItem highlight="{=${title} === 'Wuthering Heights' ? 'Error':'Success' }" id="colListItem">
+                            <cells>
+                                <Text id="_IDGenText1" text="{title}" />
+                                <Text id="_IDGenText2" text="{path:'stock' , mode : 'OneTime', targetType : 'any'}" />
+                                <Text id="_IDGenText3" text="{path:'ID' , mode : 'OneTime', targetType : 'any'}" />
+                                <Text id="_IDGenText4" text="{author}" />
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                </WizardStep>
+
+                <WizardStep title="Book Images And PDF" validated="true" id="_IDGenWizardStep3">
+                <Button id="_IDGenButton1234" text="Create Books" press="openCreateBookDialog" />
+                <Button id="_IDGenButton12345" text="Download Book" press="downloadAttachment" />
+                    <Table id="idParamTable3" mode="MultiSelect" items="{path:'/Books'}">
+                        <headerToolbar>
+                            <OverflowToolbar id="_IDGenOverflowToolbar2">
+                                <!-- <Button id="_IDGenButton22" text="Get Data" press="getTotalData" />
+                                <Button id="_IDGenButton63" text="Delete Multiple Data" press="deleteMultipleData" />
+                                <Button id="_IDGenButton33" text="Delete" press="onItemDelete" /> -->
+                                <!-- <Button id="_IDGenButton14" text="Create Currency" press="generateNewCurrency" /> -->
+                                <!-- <Button id="_IDGenButton10004" text="Create with List Id" press="generateNewList" /> -->
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column id="idCol2">
+                                <Text id="paramId3" text="title" />
+                            </Column>
+                            <Column id="idCol23">
+                                <Text id="paramId33" text="image" />
+                            </Column>
+                        </columns>
+                        <ColumnListItem highlight="{=${image} ? 'Success' : 'Error'}" id="colListIte2m">
+                            <cells>
+                                <Text id="_IDGenText21" text="{title}" />
+                                 <Text id="_IDGenText212" text="{=${image} ? 'Success' :'Error' }" />
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
+                 
+                </WizardStep>
+            </Wizard>
+        </content>
+    </Page>
+</mvc:View>

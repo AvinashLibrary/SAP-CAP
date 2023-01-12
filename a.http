@@ -1,0 +1,2 @@
+GET 
+/browse/Books?$count=true&$orderby=ID&$select=ID,author,stock,title&$skip=0&$top=100 
