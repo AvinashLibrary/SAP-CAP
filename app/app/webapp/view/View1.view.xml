@@ -13,6 +13,7 @@
                         <Label id="_IDdummy" />
                         <Button id="_IDGenButton4" text="Multi Create Addition" press="addToArray" />
                         <Button id="_IDGenButton5" text="Multi Create Save" press=".saveArray" />
+                         <Button id="_IDGenButton35" text="Multi Create Save Promise" press=".saveArrayPromise" />
                         <Label id="_IDdummyHeader" text="Headers and Parameter" />
                         <Button id="_IDGenButton7" type="Emphasized" text="Headers and Parameter" press="checkHeaderAndModelParameters" />
                         <Button id="_IDGenButton10" text="Filtering Data Controller" press=".Filtering" />
@@ -62,8 +63,8 @@
                 </WizardStep>
 
                 <WizardStep title="Book Images And PDF" validated="true" id="_IDGenWizardStep3">
-                <Button id="_IDGenButton1234" text="Create Books" press="openCreateBookDialog" />
-                <Button id="_IDGenButton12345" text="Download Book" press="downloadAttachment" />
+                    <Button id="_IDGenButton1234" text="Create Books" press="openCreateBookDialog" />
+                    <Button id="_IDGenButton12345" text="Download Book" press="downloadAttachment" />
                     <Table id="idParamTable3" mode="MultiSelect" items="{path:'/Books'}">
                         <headerToolbar>
                             <OverflowToolbar id="_IDGenOverflowToolbar2">
@@ -85,11 +86,47 @@
                         <ColumnListItem highlight="{=${image} ? 'Success' : 'Error'}" id="colListIte2m">
                             <cells>
                                 <Text id="_IDGenText21" text="{title}" />
-                                 <Text id="_IDGenText212" text="{=${image} ? 'Success' :'Error' }" />
+                                <Text id="_IDGenText212" text="{=${image} ? 'Success' :'Error' }" />
                             </cells>
                         </ColumnListItem>
                     </Table>
-                 
+                </WizardStep>
+
+                <WizardStep title="Author + Books" validated="true" id="_IDGenWizardStep23">
+                    <!-- <Table id="idParamTable35" mode="MultiSelect" items="{path:'authors>/Authors' , parameters:{'$expand':'books'}}"> -->
+                    <Table id="idParamTable35" mode="MultiSelect" items="{path:'authors>/Authors'}">    
+                        <headerToolbar>
+                            <OverflowToolbar id="_IDGenOverflowToolbar23">
+                                <Button id="_IDGenButton22" text="Add Sequential Data" press="addSequential" />
+                                 <Button id="_IDGenButton232" text="Refresh" press="onTotalRefresh" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column id="idCol213">
+                                <Text id="paramId313" text="Name" />
+                            </Column>
+                            <Column id="idCol233">
+                                <Text id="paramId331" text="ID" />
+                            </Column>
+                            <Column id="idCol2334">
+                                <Text id="paramId3314" text="Books" />
+                            </Column>
+                            <Column id="idCol2334Child">
+                                <Text id="paramId3314Child" text="Books Expanded" />
+                            </Column>
+                        </columns>
+                        <ColumnListItem id="colListIte21m">
+                            <cells>
+                                <Text id="_IDGenText211" text="{authors>ID}" />
+                                <Text id="_IDGenText2112" text="{path : 'authors>name' , formatter : '.formatter.updatename'}" />
+                                <Text id="id212"  text="{path : 'authors>books', mode : 'OneTime', targetType : 'any', formatter : '.formatter.presentBooksDetails'}"/>
+                                <HBox id="_IDGenText2113" items="{authors>books}" >
+                                  <Text id="_IDGenText211child" text="{authors>ID}" />
+                                  <!-- <Text id="_IDGenText211child2" text="{authors>title}" /> -->
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </Table>
                 </WizardStep>
             </Wizard>
         </content>

@@ -2,15 +2,17 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "../model/formatter"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox, JSONModel, Fragment) {
+    function (Controller, MessageBox, JSONModel, Fragment,formatter) {
         "use strict";
 
         return Controller.extend("app.controller.View1", {
+            formatter: formatter,
             onInit: function () {
                 var localModel = new JSONModel({ title: '', stock: '', ID: null });
                 this.getView().setModel(localModel, 'localModel');
@@ -25,7 +27,7 @@ sap.ui.define([
             onAfterRendering: function () {
                 var wizard = this.getView().byId("_IDGenWizard1");
                 // var finalStep = wizard.getSteps()[wizard.getSteps().length- 1]
-                wizard.setCurrentStep(this.getView().byId("_IDGenWizardStep3"));
+                wizard.setCurrentStep(this.getView().byId("_IDGenWizardStep23"));
             },
 
 
@@ -442,6 +444,92 @@ sap.ui.define([
                 }.bind(this));
 
 
+            },
+
+            addSequential:function(){
+                var oModel = this.getOwnerComponent().getModel("authors");
+                var oNotControlList = oModel.bindList("/Authors");
+                var obj = {
+                    ID:130,
+                    name:'Avinash change'
+                }
+                oNotControlList.attachCreateCompleted((a, b) => {
+                    var oDataModel = new sap.ui.model.odata.v4.ODataModel(
+                        {
+                            serviceUrl: '/admin/',
+                            "synchronizationMode": "None",
+                            "operationMode": "Server",
+                            "autoExpandSelect": true,
+                            "earlyRequests": true,
+                            "updateGroupId": "myGroup",
+                            
+    
+                        }
+                    );
+                    var oNotControlListChild = oDataModel.bindList(`${a.getParameter('context').getPath()}/books`,{$$updateGroupId : "myGroup",bSkipRefresh:true});
+                    var arr = [{
+                        ID:2222,
+                        title:'Avinash Title'
+                    },
+                    {
+                        ID:2223,
+                        title:'Avinash Book'
+                    }];
+                    arr.forEach((obj)=>{
+                        oNotControlListChild.create(obj,{bSkipRefresh:true});
+                    })
+                    oDataModel.submitBatch('myGroup').then((fnSuccess)=>{
+                        debugger
+                        // var table = this.getView().byId("idParamTable35").getBinding('items');
+                        // oModel.refresh("$auto");
+                       
+                    });
+                    
+
+                });
+                
+                oNotControlList.create(obj,{bSkipRefresh:true})
+                
+            },
+            onTotalRefresh:function(){
+                var oModel = this.getOwnerComponent().getModel("authors");
+                // this.onRefresh()
+                oModel.refresh();
+                oModel.refresh();
+            },
+
+            saveArrayPromise:function(){
+                var oDataModel = new sap.ui.model.odata.v4.ODataModel(
+                    {
+                        serviceUrl: '/browse/',
+                        "synchronizationMode": "None",
+                        "operationMode": "Server",
+                        "autoExpandSelect": true,
+                        "earlyRequests": true,
+                        "groupId": "$auto"
+                        
+
+                    }
+                );
+                                
+                var oNotControlListChild = oDataModel.bindList("/Books")
+                var arr = [{
+                    ID:2222,
+                    title:'Avinash Title'
+                },
+                {
+                    ID:2223,
+                    title:'Avinash Book'
+                }];
+                var promS = [];
+                arr.forEach((obj)=>{
+                    promS.push(oNotControlListChild.create(obj).created());
+                    
+                })
+                Promise.all(promS).then((val)=>{
+                    debugger
+                })
+                
             }
 
             // 1. Multiple delete using batch -- done
@@ -455,7 +543,7 @@ sap.ui.define([
             // 8. group  -- done
             // 9 . some basic error -- done some cases 501
             // 10. common response for multiple create same entity -- some what done
-            // 11. common response for multiple create same different entity
+            // 11. common response for multiple create same different entity -- doesn't seem to be possible dirrectly 
             // 12. create using path for multiple create same entity
 
 

@@ -24,6 +24,15 @@
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "4.0"
                 }
+            },
+            "mainServiceAuthor": {
+                "uri": "/admin/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
             }
         },
         "crossNavigation": {
@@ -93,6 +102,18 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true,
                     "groupId": "$direct"
+
+                }
+            },
+            "authors": {
+                "dataSource": "mainServiceAuthor",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true,
+                    "groupId": "$auto"
 
                 }
             }
