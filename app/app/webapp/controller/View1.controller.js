@@ -27,7 +27,7 @@ sap.ui.define([
             onAfterRendering: function () {
                 var wizard = this.getView().byId("_IDGenWizard1");
                 // var finalStep = wizard.getSteps()[wizard.getSteps().length- 1]
-                wizard.setCurrentStep(this.getView().byId("_IDGenWizardStep23"));
+                wizard.setCurrentStep(this.getView().byId("_IDGenWizardStep45"));
             },
 
 
@@ -53,7 +53,7 @@ sap.ui.define([
                         styleClass: "",                                      // default
                         actions: sap.m.MessageBox.Action.CLOSE,              // default
                         emphasizedAction: null,                              // default
-                        initialFocus: null,                                  // default
+                        initialFocus: nullJSON,                                  // default
                         textDirection: sap.ui.core.TextDirection.Inherit,    // default
                         details: JSON.stringify(aContexts)
                     });
@@ -70,7 +70,8 @@ sap.ui.define([
             },
             generateNew: function () {
                 var model = this.getOwnerComponent().getModel();
-                var oNotControlList = model.bindList("/Books");
+                var context = this.getView().byId("idParamTable").getBinding('items').getHeaderContext()
+                var oNotControlList = model.bindList("/Books",context);
                 oNotControlList.attachCreateCompleted((a, b) => {
                     // MessageBox.success('creation succcessfull')
                     model.refresh()
@@ -530,6 +531,46 @@ sap.ui.define([
                     debugger
                 })
                 
+            },
+
+            EditOrPutCall:function(){
+                var oDataModel = new sap.ui.model.odata.v4.ODataModel(
+                    {
+                        serviceUrl: '/admin/',
+                        "synchronizationMode": "None",
+                        "operationMode": "Server",
+                        "autoExpandSelect": true,
+                        "earlyRequests": true,
+                        "updateGroupId": "myGroupEdit"
+                        
+
+                    }
+                );
+                debugger
+
+                var headerContext = this.getView().byId("idParamTable35").getBinding('items').getHeaderContext()
+                // var obj = this.getView().byId('idParamTable35').getSelectedItem().getBindingContext("authors").getObject()
+
+                var content = oDataModel.bindContext(`/Authors(ID=170)`,headerContext);
+               
+                var content2 = oDataModel.bindContext(`/Authors(ID=150)`,headerContext);
+               
+                
+
+                Promise.all([content.getBoundContext().setProperty("name", 'Tester second'),content.getBoundContext().setProperty("placeOfDeath",'Ambala'),content2.getBoundContext().setProperty("name", 'Tester first'),content2.getBoundContext().setProperty("placeOfDeath",111)]).then(()=>{
+                    debugger
+                }).catch((errorPay)=>{
+                    MessageBox.error(errorPay.error.message)
+                })
+
+                oDataModel.submitBatch("myGroupEdit").then((val)=>{
+                    debugger
+                })
+
+            },
+
+            navToView2:function(){
+                this.getOwnerComponent().getRouter().navTo('RouteView2');
             }
 
             // 1. Multiple delete using batch -- done

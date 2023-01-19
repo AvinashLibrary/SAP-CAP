@@ -21,4 +21,10 @@ module.exports = srv => {
     return "data"
   });
 
+  
+  srv.after('getETagCorrelation', (req,res) => {
+    console.log(req)
+    return "data"
+  });
+
 }

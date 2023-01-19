@@ -12,6 +12,9 @@ entity Books : managed {
   currency : Currency;
   image : LargeString ;
 }
+annotate Books with {  modifiedAt @odata.etag};
+
+
 
 entity Authors : managed {
   key ID : Integer;
@@ -20,13 +23,19 @@ entity Authors : managed {
   dateOfDeath  : Date;
   placeOfBirth : String;
   placeOfDeath : String;
+  
   books  : Association to many Books on books.author = $self;
 }
-
+annotate Authors with {modifiedAt @odata.etag};
 
 /** Hierarchically organized Code List for Genres */
 entity Genres : sap.common.CodeList {
   key ID   : Integer;
   parent   : Association to Genres;
   children : Composition of many Genres on children.parent = $self;
+}
+
+entity bonus : managed {
+  key ID : Integer;
+  name : String(3);
 }
