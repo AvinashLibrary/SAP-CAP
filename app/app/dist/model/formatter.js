@@ -1,0 +1,1 @@
+sap.ui.define([],function(){"use strict";return{presentBooksDetails:function(t){return t[0].ID},updatename:function(t){var e=t.split(" ");var n=`FirstName :  ${e[0]} \n LastName  : ${e[1]}`;return n}}});

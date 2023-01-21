@@ -1,0 +1,15 @@
+<core:FragmentDefinition id="_IDGenFragment1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Dialog title="upload" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" id="_IDGenDialog1">
+        <Label id="_IDGenLabelFrag2" text="Title" />
+        <Input id="_IDGenInputFrag1" value="{localModelFra>/title}" />
+        <Label id="_IDGenLabel3Frag" text="Stock" />
+        <Input type="Number" id="_IDGenInputFrag2" value="{localModelFra>/stock}" />
+        <Label id="_IDGenLabel1Frag" text="ID" />
+        <Input type="Number" id="_IDGenInputFrag3" value="{localModelFra>/ID}" />
+        <Label id="_IDGenLabel1FragButt" />
+        <Input id="_IDGenInputFrag4" value="{localModelFra>/ID}" />
+        <Button id="_IDGenButton2Frag" press="storeInUI" text="clientSave" />
+        <Button id="_IDGenButton1Frag" press="storeBackend" text="Upload Content" />
+        <html:input type="file" id="htmlControlInput"></html:input>
+    </Dialog>
+</core:FragmentDefinition>

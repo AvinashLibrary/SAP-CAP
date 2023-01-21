@@ -29,3 +29,6 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
+resources/app.zip
+app/app/dist/app.zip
+Makefile_20230121081543.mta

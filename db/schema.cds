@@ -39,3 +39,4 @@ entity bonus : managed {
   key ID : Integer;
   name : String(3);
 }
+annotate bonus with {  modifiedAt @odata.etag};

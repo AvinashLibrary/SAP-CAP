@@ -1,0 +1,23 @@
+{
+  "xsappname": "bookshop",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "oauth2-configuration": {
+    "redirect-uris": ["https://193b4288trial-dev-bookshop.cfapps.us10-001.hana.ondemand.com/**","https://*.us10-001.hana.ondemand.com/**"]
+},
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    }
+  ]
+}

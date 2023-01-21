@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageBox"],function(e,n){"use strict";return e.extend("app.controller.App",{onInit(){}})});
