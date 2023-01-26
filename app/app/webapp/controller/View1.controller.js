@@ -24,6 +24,10 @@ sap.ui.define([
 
             },
 
+            navToView3:function(){
+                this.getOwnerComponent().getRouter().navTo('RouteView3');
+            },
+
             onAfterRendering: function () {
                 var wizard = this.getView().byId("_IDGenWizard1");
                 // var finalStep = wizard.getSteps()[wizard.getSteps().length- 1]
@@ -571,6 +575,35 @@ sap.ui.define([
 
             navToView2:function(){
                 this.getOwnerComponent().getRouter().navTo('RouteView2');
+            },
+
+            onItemUpdate:function(){
+                var oSelected = this.byId("idParamTable").getSelectedItem();
+                ;
+                var oDataModel = this.byId("idParamTable").getModel();
+                Promise.all([oSelected.getBindingContext().setProperty("title", 'alphasBetas')]).then(()=>{
+                    MessageBox.success('updated');
+                }).catch((error)=>{
+                    MessageBox.error(error.message)
+                });
+
+                oDataModel.submitBatch('peopleGroup');
+            },
+
+            onItemCreate:function(){
+                var oSelected = this.byId("idParamTable").getBinding("items");
+                var oDataModel = this.byId("idParamTable").getModel();
+                var obj = {};
+                obj.ID = 300;
+                obj.stock = 30;
+                obj.title = "Avinash";
+                Promise.all([oSelected.create(obj)]).then(()=>{
+                    MessageBox.success('updated');
+                }).catch((error)=>{
+                    MessageBox.error(error.message)
+                });
+
+                // oDataModel.submitBatch('peopleGroup');
             }
 
             // 1. Multiple delete using batch -- done

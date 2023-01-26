@@ -16,9 +16,9 @@
                     <Column id="idCol2346">
                         <Text id="paramId3346" text="Currency" />
                     </Column>
-                    <Column id="idCol2346ICon">
+                    <!-- <Column id="idCol2346ICon">
                         <Text id="paramId3346ICon" text="" />
-                    </Column>
+                    </Column> -->
                 </columns>
                 <ColumnListItem press="navToView2" type="Navigation" id="colListIte2m3">
                     <cells>
@@ -26,11 +26,11 @@
                         <Text id="_IDGenText21246" text="{localDataModel>title}" />
                         <Text maxLines="2" id="_IDGenText21245" text="{localDataModel>descr}" />
                         <Text id="_IDGenText2124" text="{localDataModel>currency_code}" />
-                        <Button id="BadgedButton" class="sapUiTinyMarginBeginEnd" icon="sap-icon://attachment" type="Transparent">
+                        <!-- <Button id="BadgedButton" class="sapUiTinyMarginBeginEnd" icon="sap-icon://attachment" type="Transparent">
                             <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData1" key="badge" value="2" visible="true" />
                             </customData>
-                        </Button>
+                        </Button> -->
                     </cells>
                 </ColumnListItem>
             </Table>
@@ -40,11 +40,29 @@
                     <OverflowToolbar id="_IDGenOverflowToolbar422">
                         <Title id="_IDGenTitle1" text="Testing Edit And Delete If Match" />
                         <ToolbarSpacer id="_IDGenwTitle1" />
-                        <Button id="_IDGenButton44" text="Create Bonus" press="getAndCreateBonus" />
-                        <Button id="_IDGenButton445" text="Delete Bonus" press="DeleteBonus" />
-                        <Button id="_IDGenButton24" text="Refresh Bonus" press="RefreshBonus" />
-                        <Button id="_IDGenButton4454" text="Edit Bonus" press="EditBonus" />
-                        <Button id="_IDGenButton44545" text="Reset Bonus" press="ResetBonus" />
+                        <Button id="_IDGenButton44" text="Create Bonus" press="getAndCreateBonus" >
+                         <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData12" key="badge" value="1" visible="true" />
+                            </customData>
+                        </Button>
+                        <Button id="_IDGenButton445" text="Delete Bonus" press="DeleteBonus" >
+                          <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData128" key="badge" value="2" visible="true" />
+                            </customData>
+                        </Button>
+                        <Button id="_IDGenButton24" text="Refresh Bonus" press="RefreshBonus" >
+                          <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData127" key="badge" value="2" visible="true" />
+                            </customData>
+                        </Button>
+                        <Button id="_IDGenButton4454" text="Edit Bonus" press="EditBonus" >  <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData126" key="badge" value="3" visible="true" />
+                            </customData>
+                        </Button>
+                        <Button id="_IDGenButton44545" text="Reset Bonus" press="ResetBonus" >  <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData125" key="badge" value="4" visible="true" />
+                            </customData>
+                        </Button>
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>

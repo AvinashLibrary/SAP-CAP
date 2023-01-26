@@ -1,0 +1,34 @@
+<mvc:View controllerName="app.controller.View3" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="_IDGenPage324424231">
+        <Table id="idParamTableView3" mode="MultiSelect" items="{authors>books}">
+            <headerToolbar>
+                <OverflowToolbar id="_IDGenOverflowToolbar1">
+                    <Button id="_IDGenButton32" text="Get Data" press="getTotalData" />
+                    <Button id="_IDGenButton36" text="Delete Multiple Data" press="deleteMultipleData" />
+                    <Button id="_IDGenButton33" text="Delete" press="onItemDelete" />
+                    <Button id="_IDGenButton31" text="Create" press="generateNew" />
+                    <Button id="_IDGenButton31000" text="Create with List Id" press="generateNewList" />
+                    <Button id="_IDGenButton3100033" text="Update with List Id" press="onItemUpdate" />
+                    <Button id="_IDGenButton31000356" text="Create with List Id" press="onItemCreate" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="idCol3">
+                    <Text id="paramId3" text="title" />
+                </Column>
+                <!-- <Column id="descCol3">
+                    <Text id="description3" text="stock" />
+                </Column>
+                <Column id="mandtCol">
+                    <Text id="mandt3" text="ID" />
+                </Column> -->
+            </columns>
+            <ColumnListItem highlight="{=${title} === 'Wuthering Heights' ? 'Error':'Success' }" id="colListItem3">
+                <cells>
+                    <Text id="_IDGenText31" text="{authors>title}" />
+                    <!-- <Text id="_IDGenText34" text="{authors>author}" /> -->
+                </cells>
+            </ColumnListItem>
+        </Table>
+    </Page>
+</mvc:View>

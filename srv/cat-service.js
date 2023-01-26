@@ -27,4 +27,8 @@ module.exports = srv => {
     return "data"
   });
 
+  srv.on('postCustomData', (req,res) => {
+    console.log(req)
+  })
+
 }
