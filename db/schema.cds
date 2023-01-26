@@ -25,6 +25,7 @@ entity Authors : managed {
   placeOfDeath : String;
   
   books  : Association to many Books on books.author = $self;
+  bonus  : Association to many Bonus on bonus.author = $self;
 }
 annotate Authors with {modifiedAt @odata.etag};
 
@@ -35,8 +36,9 @@ entity Genres : sap.common.CodeList {
   children : Composition of many Genres on children.parent = $self;
 }
 
-entity bonus : managed {
+entity Bonus : managed {
   key ID : Integer;
   name : String(3);
+  author : Association to Authors;
 }
-annotate bonus with {  modifiedAt @odata.etag};
+annotate Bonus with {  modifiedAt @odata.etag};

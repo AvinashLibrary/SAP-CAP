@@ -30,5 +30,36 @@
                 </cells>
             </ColumnListItem>
         </Table>
+
+        <Table id="idParamTableView43" mode="MultiSelect" items="{authors>bonus}">
+            <headerToolbar>
+                <OverflowToolbar id="_IDGenOverflowToolbar21">
+                    <Button id="_IDGenButton323" text="Get Data" press="getTotalData" />
+                    <Button id="_IDGenButton363" text="Delete Multiple Data" press="deleteMultipleData" />
+                    <Button id="_IDGenButton333" text="Delete" press="onItemDelete" />
+                    <Button id="_IDGenButton313" text="Create" press="generateNew" />
+                    <Button id="_IDGenButton310003" text="Create with List Id" press="generateNewList" />
+                    <Button id="_IDGenButton31000333" text="Update with List Id" press="onItemUpdateBnus" />
+                    <Button id="_IDGenButton310003563" text="Create with List Id" press="onItemCreateBonus" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column id="idCol33">
+                    <Text id="paramId33" text="title" />
+                </Column>
+               
+            </columns>
+            <ColumnListItem  id="colListItem34">
+                <cells>
+                    <Text id="_IDGenText313" text="{authors>name}" />
+                    <!-- <Text id="_IDGenText34" text="{authors>author}" /> -->
+                </cells>
+            </ColumnListItem>
+        </Table>
+        <footer>
+        <OverflowToolbar id="_IDGenOverflowToolbar2" >
+        <Button id="_IDGenButton1" text="Save" press="Save" ></Button>
+        </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>
