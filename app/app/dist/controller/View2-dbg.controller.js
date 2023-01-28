@@ -331,7 +331,7 @@ sap.ui.define([
 
                 Promise.all([content.getBoundContext().setProperty("name", 'Tes')]).then(() => {
                     debugger
-                    this.RefreshBonus()
+                    this.RefreshBonus();
                 }).catch((errorPay) => {
                     MessageBox.error("errorPay.error.message")
                 })
@@ -378,6 +378,85 @@ sap.ui.define([
                         debugger
                     })
                 
+            },
+            
+            UseSetValue:function(){
+                var oDataModel = this.getOwnerComponent().getModel("authors");
+                var oList = oDataModel.bindList("/Bonus");
+                oList.requestContexts().then(function (aContexts, data) {
+                    debugger
+                    var content2 = oDataModel.bindProperty(`/Bonus(ID=1)/name`,aContexts[0],{"$$noPatch":true});
+                    Promise.all([content2.setValue('Tester')]).then(()=>{
+                        debugger
+                        this.RefreshBonus()
+                    }).catch((rr)=>{
+                        debugger
+                    })
+                })
+                
+                
+
+            },
+
+            customLogics:function(){
+                sap.ui.require(["sap/base/util/each","sap/base/util/array/diff"], function(each,diff){
+                    // array
+                    each(["1", "8", "7"], function(iIndex, sString) {
+                       console.log("position: " + iIndex + ", value: " + sString);
+                    });
+                    
+                    each({name: "me", age: 32}, function(sKey, oValue) {
+                       console.log("key: " + sKey + ", value: " + oValue);
+                    });
+                    var aOldArray  = [{
+                        ID: 20737,
+                        title: "avinash Book",
+                        stock: 2222
+                    }, {
+                        ID: 2037,
+                        title: "avinash Book3",
+                        stock: 223322
+                    }];
+                    var aNewArray  = [{
+                        ID: 20737,
+                        title: "Kumar",
+                        stock: 2221
+                    }, {
+                        ID: 2037,
+                        title: "avinash Book3",
+                        stock: 1312
+                    }];
+                    var aDiff = diff(aOldArray, aNewArray);
+                    debugger
+                  });
+            },
+
+            postFunctionImports(){
+                var oDataModel = new sap.ui.model.odata.v4.ODataModel(
+                    {
+                        serviceUrl: '/browse/',
+                        "synchronizationMode": "None",
+                        "operationMode": "Server",
+                        "autoExpandSelect": true,
+                        "earlyRequests": true,
+                        "updateGroupId": "fullCreateSync",
+                        "httpHeaders": {
+                            "customAvinash": "avinash"
+                        }
+
+                    }
+                );
+
+                var importContext = oDataModel.bindContext('/ChangeBonusByID(...)');
+                importContext.setProperty('ID',2);
+                importContext.setProperty('quantity',2);
+                importContext.execute().then(()=>{
+                    MessageBox.success(aContexts)
+                });
+
+                // importContext.requestObject("value").then(function (aContexts) {
+                    
+                // }).catch((error) => MessageBox.error(error.message))
             }
             
 

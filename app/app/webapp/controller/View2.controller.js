@@ -86,7 +86,7 @@ sap.ui.define([
                 // }
 
                 var model = this.getOwnerComponent().getModel("authors");
-                var oList1 = model.bindContext("/Authors(ID=150)/books");
+                var oList1 = model.bindContext("/Authors(ID=150)/books",{$$patchWithoutSideEffects:true});
                 oList1.requestObject().then((data) => {
 
                     var multiSaveModel = new JSONModel();

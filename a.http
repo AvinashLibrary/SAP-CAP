@@ -1,2 +1,2 @@
 GET 
-/browse/Books?$count=true&$orderby=ID&$select=ID,author,stock,title&$skip=0&$top=100 
+https://port4004-workspaces-ws-hqmhg.us10.trial.applicationstudio.cloud.sap/browse/Books

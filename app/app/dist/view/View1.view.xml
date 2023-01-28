@@ -3,6 +3,7 @@
     
         <content>
          <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
+          <Button width="100%" id="newutton" type="Critical" text="NestedContextBinding" press="navToView3" />
             <Wizard id="_IDGenWizard1">
                 <WizardStep validated="true" id="_IDGenWizardStep1">
                     <form:SimpleForm id="_IDGenSimpleForm1">
@@ -40,6 +41,8 @@
                                 <Button id="_IDGenButton3" text="Delete" press="onItemDelete" />
                                 <Button id="_IDGenButton1" text="Create" press="generateNew" />
                                 <Button id="_IDGenButton1000" text="Create with List Id" press="generateNewList" />
+                                <Button id="_IDGenButton100033" text="Update with List Id" press="onItemUpdate" />
+                                <Button id="_IDGenButton1000356" text="Create with List Id" press="onItemCreate" />
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>
@@ -102,6 +105,7 @@
                                 <Button id="_IDGenButton22" text="Add Sequential Data" press="addSequential" />
                                 <Button id="_IDGenButton232" text="Refresh" press="onTotalRefresh" />
                                 <Button id="editCase" text="Edit" press="EditOrPutCall" />
+                                
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>

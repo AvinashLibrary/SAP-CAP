@@ -1,6 +1,8 @@
 <mvc:View xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="app.controller.View2" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
+            <Button id="_IDGenButton1" press="customLogics" text="Custom Logics" />
+            <Button id="_IDGenButton2" press="postFunctionImports" text="Function imports Push" />
             <Table id="idParamTable34" headerText="Testing JSON DATA" mode="MultiSelect" items="{path:'localDataModel>/value'}">
                 <headerToolbar />
                 <columns>
@@ -35,32 +37,39 @@
                 </ColumnListItem>
             </Table>
 
-            <Table id="idParamTable344"  headerText="T" mode="None" items="{path:'authors>/Bonus'}">
+            <Table id="idParamTable344" headerText="T" mode="None" items="{path:'authors>/Bonus'}">
                 <headerToolbar>
                     <OverflowToolbar id="_IDGenOverflowToolbar422">
                         <Title id="_IDGenTitle1" text="Testing Edit And Delete If Match" />
                         <ToolbarSpacer id="_IDGenwTitle1" />
-                        <Button id="_IDGenButton44" text="Create Bonus" press="getAndCreateBonus" >
-                         <customData>
+                        <Button id="_IDGenButton44" text="Create Bonus" press="getAndCreateBonus">
+                            <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData12" key="badge" value="1" visible="true" />
                             </customData>
                         </Button>
-                        <Button id="_IDGenButton445" text="Delete Bonus" press="DeleteBonus" >
-                          <customData>
+                        <Button id="_IDGenButton445" text="Delete Bonus" press="DeleteBonus">
+                            <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData128" key="badge" value="2" visible="true" />
                             </customData>
                         </Button>
-                        <Button id="_IDGenButton24" text="Refresh Bonus" press="RefreshBonus" >
-                          <customData>
+                        <Button id="_IDGenButton24" text="Refresh Bonus" press="RefreshBonus">
+                            <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData127" key="badge" value="2" visible="true" />
                             </customData>
                         </Button>
-                        <Button id="_IDGenButton4454" text="Edit Bonus" press="EditBonus" >  <customData>
+                        <Button id="_IDGenButton4454" text="Edit Bonus" press="EditBonus">
+                            <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData126" key="badge" value="3" visible="true" />
                             </customData>
                         </Button>
-                        <Button id="_IDGenButton44545" text="Reset Bonus" press="ResetBonus" >  <customData>
+                        <Button id="_IDGenButton44545" text="Reset Bonus" press="ResetBonus">
+                            <customData>
                                 <BadgeCustomData id="_IDGenBadgeCustomData125" key="badge" value="4" visible="true" />
+                            </customData>
+                        </Button>
+                        <Button id="_IDGenButton445d4" text="Edit Bonus Value" press="UseSetValue">
+                            <customData>
+                                <BadgeCustomData id="_IDGenBadgeCustomData12d6" key="badge" value="4" visible="true" />
                             </customData>
                         </Button>
                     </OverflowToolbar>

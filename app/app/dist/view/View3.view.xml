@@ -34,11 +34,13 @@
         <Table id="idParamTableView43" mode="MultiSelect" items="{authors>bonus}">
             <headerToolbar>
                 <OverflowToolbar id="_IDGenOverflowToolbar21">
-                   
-                    <Button id="_IDGenButton333" text="Delete" press="onItemDeleteBon" />
-                    <Button id="_IDGenButton310003563" text="Create with List Id" press="onItemCreateBonus" />
+                    <Button id="_IDGenButton323" text="Get Data" press="getTotalData" />
+                    <Button id="_IDGenButton363" text="Delete Multiple Data" press="deleteMultipleData" />
+                    <Button id="_IDGenButton333" text="Delete" press="onItemDelete" />
+                    <Button id="_IDGenButton313" text="Create" press="generateNew" />
+                    <Button id="_IDGenButton310003" text="Create with List Id" press="generateNewList" />
                     <Button id="_IDGenButton31000333" text="Update with List Id" press="onItemUpdateBnus" />
-                    
+                    <Button id="_IDGenButton310003563" text="Create with List Id" press="onItemCreateBonus" />
                 </OverflowToolbar>
             </headerToolbar>
             <columns>
@@ -56,7 +58,6 @@
         </Table>
         <footer>
         <OverflowToolbar id="_IDGenOverflowToolbar2" >
-        <Button id="_IDGenButton310003565" text="Discard" press="revertChanges" />
         <Button id="_IDGenButton1" text="Save" press="Save" ></Button>
         </OverflowToolbar>
         </footer>
