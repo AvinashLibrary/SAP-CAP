@@ -1,0 +1,20 @@
+<mvc:View xmlns:form="sap.ui.layout.form" controllerName="app.controller.View4" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="_IDGenPage3244s24231">
+        <content>
+            <form:SimpleForm id="_IDGenSimpleForm1">
+                <Label text="ID" id="_IDGenLabel1" />
+                <Input  value="{authors>ID}" id="_IDGenInput1" />
+                <Label text="Name" id="_IDGenLabel3" />
+                <Input showValueHelp="true" valueHelpRequest="openNameDialog" change="onChangeName" value="{path:'authors>name'}" id="_IDGenInput3" />
+                <Button id="_IDGenButton1" press="onSubmit" text="Save"/>
+            </form:SimpleForm>
+            <form:SimpleForm id="_IDGenSimpleForms1">
+                <Label text="ID" id="_IDGenLabels1" />
+                <Input value="{authorsLocal>/ID}" id="_IDGenInpust1" />
+                <Label text="Name" id="_IDGensLabel3" />
+                <Input value="{authorsLocal>/name}" id="_IDGenInpsut3" />
+                <Button id="_IDGenBustton1" press="onSubmit" text="Save"/>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

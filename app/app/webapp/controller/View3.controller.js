@@ -6,8 +6,9 @@ sap.ui.define(
     "sap/m/MessagePopover",
     "sap/m/MessageItem",
     'sap/ui/core/Core',
+    "sap/ui/model/json/JSONModel"
   ],
-  function (BaseController, MessageBox, MessageModel, MessagePopover, MessageItem, Core) {
+  function (BaseController, MessageBox, MessageModel, MessagePopover, MessageItem, Core,JSONModel) {
     "use strict";
 
     return BaseController.extend("app.controller.View3", {
@@ -95,16 +96,24 @@ sap.ui.define(
         // oDataModel.submitBatch('peopleGroupAdmin');
       },
 
+      onChangeName:function(oEvt){
+        var context = oEvt.getSource().getBindingContext("authors");
+        context.setProperty("name",oEvt.getParameter('value'));
+      },
+
       onItemCreateBonus: function () {
         var oSelected = this.byId("idParamTableView43").getBinding("items");
         var oDataModel = this.byId("idParamTableView43").getModel("authors");
         var obj = {};
         obj.ID = 300;
         obj.name = "Av1";
+        obj.value = "500";
         var obj2 = {};
         obj2.ID = 301;
         obj2.name = "Av2";
+        obj2.value = "400";
         Promise.all([oSelected.create(obj),oSelected.create(obj2)])
+
         // .then(() => {
         //   MessageBox.success('updated');
         // }).catch((error) => {
@@ -117,6 +126,10 @@ sap.ui.define(
         var oSelected = this.byId("idParamTableView43").getSelectedItem();
         var oDataModel = this.byId("idParamTableView43").getModel("authors");
         Promise.all([oSelected.getBindingContext("authors").setProperty("name", 'AvN')]);
+        Promise.all([oSelected.getBindingContext("authors").setProperty("value", "200000")]);
+        
+
+
         
         // .then(() => {
         //   MessageBox.success('updated');
@@ -136,8 +149,17 @@ sap.ui.define(
         
       },
 
+      metaDataHandler:function(oEvent){
+        var localModelFra = new JSONModel({ name: ''});
+        this.getView().setModel(localModelFra,'localModelFra')
+        oEvent.getSource().getDependents()[0].open();
+      },
+
 
       Save: function () {
+        var context = this.getView().byId("_IDGenInput3").getBindingContext("authors");
+        var val = this.getView().byId("_IDGenInput3").getValue();
+        context.setProperty("name",val);
         var oDataModel = this.byId("idParamTableView3").getModel("authors");
         oDataModel.submitBatch('peopleGroupAdmin').then((data)=>{
           window.alert('error')
@@ -150,6 +172,12 @@ sap.ui.define(
       revertChanges : function(){
         var oDataModel = this.byId("idParamTableView3").getModel("authors");
         oDataModel.resetChanges("peopleGroupAdmin");
+      },
+      CreationChecks:function(){
+        
+        var oSelected = this.byId("idParamTableView43").getBinding("items");
+        var objParam = this.getView().getModel("localModelFra").getData();
+        oSelected.create(objParam)
       }
 
     });

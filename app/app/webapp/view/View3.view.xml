@@ -1,4 +1,4 @@
-<mvc:View controllerName="app.controller.View3" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="app.controller.View3" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="_IDGenPage324424231">
         <Table id="idParamTableView3" mode="MultiSelect" items="{authors>books}">
             <headerToolbar>
@@ -30,35 +30,46 @@
                 </cells>
             </ColumnListItem>
         </Table>
-
+        <form:SimpleForm id="_IDGenSimpleForm1">
+            <Label text="ID" id="_IDGenLabel1" />
+            <Input value="{authors>ID}" id="_IDGenInput1" />
+            <Label text="Name" id="_IDGenLabel3" />
+            <Input showValueHelp="true" valueHelpRequest="openNameDialog" change="onChangeName" value="{path:'authors>name'}" id="_IDGenInput3" />
+            <Button id="_IDGenButton13" press="onSubmit" text="Save" />
+        </form:SimpleForm>
         <Table id="idParamTableView43" mode="MultiSelect" items="{authors>bonus}">
             <headerToolbar>
                 <OverflowToolbar id="_IDGenOverflowToolbar21">
-                   
                     <Button id="_IDGenButton333" text="Delete" press="onItemDeleteBon" />
                     <Button id="_IDGenButton310003563" text="Create with List Id" press="onItemCreateBonus" />
                     <Button id="_IDGenButton31000333" text="Update with List Id" press="onItemUpdateBnus" />
-                    
+                    <Button id="_IDGenButton31000333s" text="Add from Dialog" press="metaDataHandler">
+                    <dependents>
+                    <core:Fragment id="_IDGenFragment1" fragmentName="app.fragments.AddBonus" type="XML"></core:Fragment>
+                    </dependents>
+                    </Button>
                 </OverflowToolbar>
             </headerToolbar>
             <columns>
                 <Column id="idCol33">
                     <Text id="paramId33" text="title" />
                 </Column>
-               
+                <Column id="idCol33s">
+                    <Text id="paramId3s3" text="value" />
+                </Column>
             </columns>
-            <ColumnListItem  id="colListItem34">
+            <ColumnListItem id="colListItem34">
                 <cells>
                     <Text id="_IDGenText313" text="{authors>name}" />
-                    <!-- <Text id="_IDGenText34" text="{authors>author}" /> -->
+                    <Text id="_IDGenText34" text="{authors>value}" />
                 </cells>
             </ColumnListItem>
         </Table>
         <footer>
-        <OverflowToolbar id="_IDGenOverflowToolbar2" >
-        <Button id="_IDGenButton310003565" text="Discard" press="revertChanges" />
-        <Button id="_IDGenButton1" text="Save" press="Save" ></Button>
-        </OverflowToolbar>
+            <OverflowToolbar id="_IDGenOverflowToolbar2">
+                <Button id="_IDGenButton310003565" text="Discard" press="revertChanges" />
+                <Button id="_IDGenButton1" text="Save" press="Save" />
+            </OverflowToolbar>
         </footer>
     </Page>
 </mvc:View>

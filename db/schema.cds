@@ -39,6 +39,7 @@ entity Genres : sap.common.CodeList {
 entity Bonus : managed {
   key ID : Integer;
   name : String(3);
+  value: String(3);
   author : Association to Authors;
 }
 annotate Bonus with {  modifiedAt @odata.etag};

@@ -576,6 +576,9 @@ sap.ui.define([
             navToView2:function(){
                 this.getOwnerComponent().getRouter().navTo('RouteView2');
             },
+            navToView4:function(){
+                this.getOwnerComponent().getRouter().navTo('RouteView4');
+            },
 
             onItemUpdate:function(){
                 var oSelected = this.byId("idParamTable").getSelectedItem();

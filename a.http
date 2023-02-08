@@ -1,2 +1,4 @@
 GET 
-https://port4004-workspaces-ws-hqmhg.us10.trial.applicationstudio.cloud.sap/browse/Books
+Authorization: Basic Authorization
+Content-Type: application/json
+http://localhost:4004/browse/Books

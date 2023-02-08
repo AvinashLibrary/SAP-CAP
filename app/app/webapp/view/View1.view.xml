@@ -3,7 +3,8 @@
     
         <content>
          <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
-          <Button width="100%" id="newutton" type="Critical" text="NestedContextBinding" press="navToView3" />
+          <Button width="100%" id="newutton" type="Critical" text="Edit Nested Context Binding" press="navToView3" />
+          <Button width="100%" id="newutton4" type="Critical" text="Create Nested Context Binding" press="navToView4" />  
             <Wizard id="_IDGenWizard1">
                 <WizardStep validated="true" id="_IDGenWizardStep1">
                     <form:SimpleForm id="_IDGenSimpleForm1">
