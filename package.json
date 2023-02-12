@@ -1,63 +1,69 @@
 {
-  "name": "bookshop",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "engines": {
-    "node": "^16"
-  },
-  "cds": {
-    "requires": {
-      "auth": {
-        "kind": "mocked"
-      },
-      "[production]": {
-        "db": {
-          "kind": "hana-cloud"
+    "name": "bookshop",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "engines": {
+        "node": "^16"
+    },
+    "cds": {
+        "requires": {
+            "auth": {
+                "kind": "mocked"
+            },
+            "[production]": {
+                "db": {
+                    "kind": "hana-cloud"
+                },
+                "auth": {
+                    "kind": "xsuaa"
+                },
+                "approuter": {
+                    "kind": "cloudfoundry"
+                }
+            },
+            "db": {
+                "kind": "sql"
+            }
         },
-        "auth": {
-          "kind": "xsuaa"
+        "odataV2": {
+            "endpoint": {
+                "path": "/odata/v2"
+            },
+            "enabled": true
         },
-        "approuter": {
-          "kind": "cloudfoundry"
+        "odataV4": {
+            "endpoint": {
+                "path": "/odata/v4"
+            },
+            "enabled": true
         }
-      },
-      "db": {
-        "kind": "sql"
-      }
     },
-    "odataV2": {
-      "endpoint": {
-        "path": "/odata/v2"
-      },
-      "enabled": true
+    "dependencies": {
+        "@sap/cds": "^6.4.1",
+        "@sap/cds-odata-v2-adapter-proxy": "^1.9.18",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "hdb": "^0.19.0",
+        "passport": "^0"
     },
-    "odataV4": {
-      "endpoint": {
-        "path": "/odata/v4"
-      },
-      "enabled": true
-    }
-  },
-  "dependencies": {
-    "@sap/cds": "^6.4.1",
-    "@sap/cds-odata-v2-adapter-proxy": "^1.9.18",
-    "@sap/xssec": "^3",
-    "express": "^4",
-    "hdb": "^0.19.0",
-    "passport": "^0"
-  },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.102.14",
-    "sqlite3": "^5.0.4"
-  },
-  "scripts": {
-    "start": "cds run",
-    "watch-app": "cds watch --open app/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "sapux": [
-    "app/app"
-  ]
+    "devDependencies": {
+        "@sap/ux-specification": "^1.102.16",
+        "sqlite3": "^5.0.4",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds run",
+        "watch-app": "cds watch --open app/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-firoielementsapp": "cds watch --open firoielementsapp/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy bookshop --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "sapux": [
+        "app/app",
+        "app/firoielementsapp"
+    ]
 }

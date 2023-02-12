@@ -1,0 +1,227 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "firoielementsapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.8.6",
+            "toolsId": "60df6c58-015d-4c1e-8dcb-4aa7e8323b6c"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/admin/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.110.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "firoielementsapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "AuthorsList",
+                    "target": "AuthorsList"
+                },
+                {
+                    "pattern": "Authors({key}):?query:",
+                    "name": "AuthorsObjectPage",
+                    "target": "AuthorsObjectPage"
+                }
+            ],
+            "targets": {
+                "AuthorsList": {
+                    "type": "Component",
+                    "id": "AuthorsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Authors",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "Authors": {
+                                    "detail": {
+                                        "route": "AuthorsObjectPage"
+                                    }
+                                }
+                            },
+                            "views": {
+                                "paths": [
+                                    {
+                                        "key": "tableView",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                                    },
+                                    {
+                                        "key": "tableView1",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                                        "entitySet": "Books"
+                                    }
+                                ]
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "columns": {
+                                        "DataField::books::title": {
+                                            "availability": "Default"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AuthorsObjectPage": {
+                    "type": "Component",
+                    "id": "AuthorsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Authors",
+                            "navigation": {},
+                            "controlConfiguration": {
+                                "bonus/@com.sap.vocabularies.UI.v1.LineItem#Bonus": {
+                                    "tableSettings": {
+                                        "selectionMode": "Multi",
+                                        "type": "ResponsiveTable",
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "Inline"
+                                        },
+                                        "personalization": {
+                                            "column": true,
+                                            "filter": true,
+                                            "sort": true
+                                        },
+                                        "enableExport": false,
+                                        "enableFullScreen": false,
+                                        "enablePaste": false,
+                                        "selectAll": true,
+                                        "quickVariantSelection": {
+                                            "hideTableTitle": false,
+                                            "showCounts": false
+                                        }
+                                    }
+                                },
+                                "books/@com.sap.vocabularies.UI.v1.LineItem#Books": {
+                                    "tableSettings": {
+                                        "selectionMode": "Multi",
+                                        "type": "ResponsiveTable",
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "Inline"
+                                        },
+                                        "personalization": {
+                                            "column": true,
+                                            "filter": true,
+                                            "sort": true
+                                        },
+                                        "quickVariantSelection": {
+                                            "hideTableTitle": false,
+                                            "showCounts": true
+                                        },
+                                        "condensedTableLayout": false
+                                    },
+                                    "columns": {
+                                        "DataField::descr": {
+                                            "availability": "Default",
+                                            "width": "5rem"
+                                        }
+                                    }
+                                }
+                            },
+                            "sectionLayout": "Page",
+                            "content": {
+                                "footer": {
+                                    "actions": {
+                                        "_saveComplete": {
+                                            "press": "firoielementsapp.ext.controller.ObjectPageScreen.completeSave",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "{i18n>save}"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

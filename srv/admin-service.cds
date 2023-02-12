@@ -4,3 +4,4 @@ service AdminService @(requires:'authenticated-user') {
   entity Authors as projection on my.Authors;
   entity Bonus as projection on my.Bonus;
 }
+
