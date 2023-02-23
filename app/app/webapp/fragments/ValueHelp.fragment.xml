@@ -1,16 +1,28 @@
-<core:FragmentDefinition id="_IDGenFrsagment1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.m">
-   	<SelectDialog
-		id="mySelectDialog"
-		noDataText="No Products Found"
-		title="Select Product"
-		search=".onSearch"
-		confirm=".onDialogClose"
-		cancel=".onDialogClose"
-		items="{
-			path: 'authors>/Authors'
+<core:FragmentDefinition id="_IDGenFrsagmenst1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <TableSelectDialog selectionChange="onUpdateToken" updateStarted="setTheKeys" growingThreshold="3" updateFinished="setTheKeys" multiSelect="true" rememberSelections="true" growing="true" id="myDialog" noDataText="No Products Found" title="Select Product" search=".handleSearch" confirm=".handleClose" cancel=".handleClose" items="{
+			path: '/Books'			
 		}">
-		<StandardListItem id="_IDGenStandardListItem1"
-			title="{authors>name}"
-			type="Active" />
-	</SelectDialog>
+        <ColumnListItem id="_IDGenColumnListsItem1" vAlign="Middle">
+            <cells>
+               
+                <Text id="_IDGenTesxt1" text="{ID}" />
+                <Text id="_IDGenTesxt2" text="{title}" />
+               
+            </cells>
+        </ColumnListItem>
+        <columns>
+            <Column id="_IDGenColusmn1" width="12em">
+                <header>
+                    <Text id="_IDGesnText3" text="ID" />
+                </header>
+            </Column>
+            <Column id="_IDGenCoslumn2" minScreenWidth="Tablet" demandPopin="true">
+                <header>
+                    <Text id="_IDsGenText4" text="Title" />
+                </header>
+            </Column>
+         
+           
+        </columns>
+    </TableSelectDialog>
 </core:FragmentDefinition>

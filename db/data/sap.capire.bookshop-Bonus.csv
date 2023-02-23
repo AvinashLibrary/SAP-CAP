@@ -1,0 +1,4 @@
+ID,name,value,accepted,author_ID
+1,Bonus1,10,false,170
+2,Bonus2,20,true,170
+3,Bonus3,30,false,150

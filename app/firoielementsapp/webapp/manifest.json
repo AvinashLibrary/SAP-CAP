@@ -94,6 +94,16 @@
                     "pattern": "Authors({key}):?query:",
                     "name": "AuthorsObjectPage",
                     "target": "AuthorsObjectPage"
+                },
+                {
+                    "pattern": "Books({key}):?query:",
+                    "name": "BooksObjectPage_Books",
+                    "target": "BooksObjectPage_Books"
+                },
+                {
+                    "pattern": "Authors({key})/bonus({key2}):?query:",
+                    "name": "BonusObjectPage_bonus",
+                    "target": "BonusObjectPage_bonus"
                 }
             ],
             "targets": {
@@ -103,25 +113,31 @@
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "Authors",
-                            "variantManagement": "Page",
+                            "entitySet": "Books",
+                           
                             "navigation": {
                                 "Authors": {
                                     "detail": {
                                         "route": "AuthorsObjectPage"
+                                    }
+                                },
+                                "Books": {
+                                    "detail": {
+                                        "route": "BooksObjectPage_Books"
                                     }
                                 }
                             },
                             "views": {
                                 "paths": [
                                     {
-                                        "key": "tableView",
-                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
-                                    },
-                                    {
                                         "key": "tableView1",
                                         "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
                                         "entitySet": "Books"
+                                    },
+                                    {
+                                        "key": "tableView",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                                        "entitySet": "Authors"
                                     }
                                 ]
                             },
@@ -132,8 +148,17 @@
                                             "availability": "Default"
                                         }
                                     }
+                                },
+                                "books/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                                    "tableSettings": {
+                                        "creationMode": {
+                                            "createAtEnd": true,
+                                            "name": "NewPage"
+                                        }
+                                    }
                                 }
-                            }
+                            },
+                            "hideFilterBar": false
                         }
                     }
                 },
@@ -144,7 +169,13 @@
                     "options": {
                         "settings": {
                             "entitySet": "Authors",
-                            "navigation": {},
+                            "navigation": {
+                                "bonus": {
+                                    "detail": {
+                                        "route": "BonusObjectPage_bonus"
+                                    }
+                                }
+                            },
                             "controlConfiguration": {
                                 "bonus/@com.sap.vocabularies.UI.v1.LineItem#Bonus": {
                                     "tableSettings": {
@@ -166,6 +197,15 @@
                                         "quickVariantSelection": {
                                             "hideTableTitle": false,
                                             "showCounts": false
+                                        }
+                                    },
+                                    "actions": {
+                                        "creatBonus": {
+                                            "press": "firoielementsapp.ext.controller.ObjectPageScreen.completeSave",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Create Bonus"
                                         }
                                     }
                                 },
@@ -209,6 +249,30 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                "BooksObjectPage_Books": {
+                    "type": "Component",
+                    "id": "BooksObjectPage_Books",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Books",
+                            "navigation": {}
+                        }
+                    }
+                },
+                "BonusObjectPage_bonus": {
+                    "type": "Component",
+                    "id": "BonusObjectPage_bonus",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+
+                        "settings": {
+                            "entitySet": "Bonus",
+                            "navigation": {}
+
                         }
                     }
                 }

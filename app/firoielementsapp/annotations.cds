@@ -1,27 +1,26 @@
 using AdminService as service from '../../srv/admin-service';
 
-annotate service.Authors with @(UI.SelectionFields : [name
-]);
+// annotate service.Authors with @(UI.SelectionFields : [
+//     name,books.]
+// );
 
-annotate service.Books with @(UI.SelectionFields : [title
-]);
+annotate service.Authors with @odata.draft.enabled;
+annotate service.Books with @odata.draft.enabled;
+// annotate service.Authors with {
+//     ID @Common.Label : '{i18n>ID}'
+// };
 
+// annotate service.Authors with {
+//     name @Common.Label : '{i18n>Name}'
+// };
 
-annotate service.Authors with {
-    ID @Common.Label : '{i18n>ID}'
-};
+// annotate service.Authors with {
+//     dateOfBirth @Common.Label : '{i18n>dateOfBirth}'
+// };
 
-annotate service.Authors with {
-    name @Common.Label : '{i18n>Name}'
-};
-
-annotate service.Authors with {
-    dateOfBirth @Common.Label : '{i18n>dateOfBirth}'
-};
-
-annotate service.Authors with {
-    dateOfDeath @Common.Label : '{i18n>dateOfDeath}'
-};
+// annotate service.Authors with {
+//     dateOfDeath @Common.Label : '{i18n>dateOfDeath}'
+// };
 
 annotate service.Authors with @(
     UI.Facets                     : [
@@ -110,7 +109,45 @@ annotate service.Books with @(UI.LineItem #Books : [
     },
 ]);
 
-annotate service.Bonus with @(UI.LineItem #Bonus : []);
+annotate service.Bonus with @(UI.LineItem #Bonus : [
+    {
+        $Type : 'UI.DataField',
+        Value : ID,
+        Label : 'ID',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : name,
+        Label : 'name',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : value,
+        Label : 'value',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : accepted,
+        Label : 'Accepted',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : author.ID,
+        Label : 'ID',
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : author.name,
+        Label : 'name',
+    },
+
+    {
+        $Type  : 'UI.DataFieldForAction',
+        Action : 'AdminService.acceptBonus',
+        Label  : '{i18n>AcceptBonus}'
+    }
+]);
+
 annotate service.Authors with @(UI.LineItem #Authors : []);
 
 annotate service.Authors with @(UI.LineItem : [
@@ -177,6 +214,10 @@ annotate service.Authors with {
     placeOfDeath @Common.Label : '{i18n>Placeofdeath}'
 };
 
+annotate service.Books with {
+    title @Common.Label : '{i18n>title}'
+};
+
 annotate service.Authors with {
     placeOfBirth @(
         Common.ValueList                : {
@@ -213,6 +254,28 @@ annotate service.Authors with {
     )
 };
 
+
+annotate service.Books with {
+    title @(
+        Common.ValueList                : {
+            $Type          : 'Common.ValueListType',
+            CollectionPath : 'Books',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : title,
+                    ValueListProperty : 'title',
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ID',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : false
+    )
+};
+
 annotate service.Authors with @(
     UI.SelectionPresentationVariant #tableView  : {
         $Type               : 'UI.SelectionPresentationVariantType',
@@ -224,7 +287,7 @@ annotate service.Authors with @(
             $Type         : 'UI.SelectionVariantType',
             SelectOptions : [],
         },
-        Text                : 'Table View',
+        Text                : 'Authors',
     },
     UI.LineItem #tableView                      : [],
     UI.SelectionPresentationVariant #tableView1 : {
@@ -237,7 +300,7 @@ annotate service.Authors with @(
             $Type         : 'UI.SelectionVariantType',
             SelectOptions : [],
         },
-        Text                : 'Table View 1',
+        Text                : 'Table View',
     }
 );
 
@@ -284,6 +347,18 @@ annotate service.Books with @(
             $Type         : 'UI.SelectionVariantType',
             SelectOptions : [],
         },
-        Text                : 'Table View Books',
+        Text                : 'Books',
     }
+
+
 );
+
+annotate AdminService.Bonus with actions {
+    acceptBonus @(
+        Core.OperationAvailable             : {$edmJson : {$Eq : [
+            {$Path : 'in/accepted'},
+            false
+        ]}},
+        Common.SideEffects.TargetProperties : ['in/accepted'],
+    )
+};

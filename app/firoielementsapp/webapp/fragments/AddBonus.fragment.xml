@@ -1,0 +1,9 @@
+<core:FragmentDefinition id="_IDGenFragment1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Dialog title="upload" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" id="_IDGenDialog1">
+        <Label id="_IDGenLabelFrag2" text="Title" />
+        <Input id="_IDGenInputFrag1" value="{localModelFra>/title}" />
+        <Label id="_IDGenLabel3Frag" text="Stock" />
+       
+        <Button id="testere" press="CreationChecks" text="confirm"/>
+    </Dialog>
+</core:FragmentDefinition>

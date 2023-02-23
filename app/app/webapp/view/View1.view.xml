@@ -1,10 +1,31 @@
-<mvc:View xmlns:form="sap.ui.layout.form" controllerName="app.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:form="sap.ui.layout.form" controllerName="app.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
     
         <content>
-         <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
+
+	      <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
           <Button width="100%" id="newutton" type="Critical" text="Edit Nested Context Binding" press="navToView3" />
           <Button width="100%" id="newutton4" type="Critical" text="Create Nested Context Binding" press="navToView4" />  
+          <MultiInput id="_IDGenMultiInput1"  valueHelpRequest="openValueHelpSelects" 
+          suggestionRows="{
+				path: '/Books'
+			}">
+			<suggestionColumns>
+				<Column id="_IDGenColumn1">
+					<Label id="_IDGenLabel5" text="ID"/>
+				</Column>
+				<Column id="_IDGenColumn2">
+					<Label id="_IDGenLabel6" text="Title"/>
+				</Column>
+			</suggestionColumns>
+			<suggestionRows>
+				<ColumnListItem id="_IDGenColumnListItem1">
+					<Label id="_IDGenLabel7" text="{ID}" />
+					<Label id="_IDGenLabel8" text="{title}" />
+				</ColumnListItem>
+			</suggestionRows>
+          </MultiInput>
+
             <Wizard id="_IDGenWizard1">
                 <WizardStep validated="true" id="_IDGenWizardStep1">
                     <form:SimpleForm id="_IDGenSimpleForm1">
@@ -44,6 +65,7 @@
                                 <Button id="_IDGenButton1000" text="Create with List Id" press="generateNewList" />
                                 <Button id="_IDGenButton100033" text="Update with List Id" press="onItemUpdate" />
                                 <Button id="_IDGenButton1000356" text="Create with List Id" press="onItemCreate" />
+                                 <Button id="_IDGenButston1000356" text="Create with List Id" press="onPersoButtonPressed" />
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>

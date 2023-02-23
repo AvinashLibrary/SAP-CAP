@@ -1,0 +1,18 @@
+<core:FragmentDefinition 	xmlns:fb="sap.ui.comp.filterbar" id="_IDGenFrsagments1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m">
+    <ValueHelpDialog  filterMode="true"  selectionChange="seledctionChange" afterOpen="afterOpen" verticalScrolling="false" tokenRemove="tokenRdemove" updateSelection="updateSelection" id="_IDGenValsueHelpDialog1" title="Books" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" supportRanges="false" key="ID" descriptionKey="title">
+      
+      
+        <filterBar>
+            <fb:FilterBar  id="_IDGenFilterBsar1"  search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem id="_IDGenFilterGsroupItem1" groupName="__$INTERNAL$" name="ID" label="ID" visibleInFilterBar="true">
+                        <fb:control>
+                            <m:Input id="_IDGenInputs1" name="ID" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </filterBar>
+    </ValueHelpDialog>
+</core:FragmentDefinition>

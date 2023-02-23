@@ -20,6 +20,7 @@ entity Books : managed {
 
 }
 
+
 annotate Books with {
   modifiedAt @odata.etag
 };
@@ -32,32 +33,9 @@ entity Authors : managed {
       dateOfDeath  : Date;
       placeOfBirth : String;
       placeOfDeath : String;
-      @Capabilities : {
-        ReadRestrictions   : {
-          $Type         : 'Capabilities.ReadRestrictionsType',
-          Readable,
-          CustomHeaders : [{
-            $Type : 'Capabilities.CustomParameter',
-            Name  : 'sap-Header'
-          }]
-        },
-
-        UpdateRestrictions : {
-          $Type         : 'Capabilities.UpdateRestrictionsType',
-          Updatable,
-          CustomHeaders : [{
-            $Type : 'Capabilities.CustomParameter',
-            Name  : 'sap-Header'
-          }
-
-
-          ],
-
-        },
-      }
-
       books        : Association to many Books
                        on books.author = $self;
+
       bonus        : Association to many Bonus
                        on bonus.author = $self;
 
@@ -65,8 +43,11 @@ entity Authors : managed {
 }
 
 annotate Authors with {
-  modifiedAt @odata.etag
+  modifiedAt
+  @odata.etag
 };
+
+
 
 /**
  * Hierarchically organized Code List for Genres
@@ -82,6 +63,7 @@ entity Bonus : managed {
   key ID     : Integer;
       name   : String(3);
       value  : String(3);
+      accepted:Boolean;
       author : Association to Authors;
 }
 
