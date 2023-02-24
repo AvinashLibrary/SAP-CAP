@@ -1,0 +1,8 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros"
+    xmlns:html="http://www.w3.org/1999/xhtml" controllerName="firoielementsapp.ext.view.Edit">
+    <Page id="Edit" title="Edit">
+        <content>
+        <TextArea id="_IDGenTextArea1" value="dadsadsadadadsadadsadsadsadad"></TextArea>
+        </content>
+    </Page>
+</mvc:View>

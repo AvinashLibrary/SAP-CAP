@@ -4,8 +4,8 @@ using AdminService as service from '../../srv/admin-service';
 //     name,books.]
 // );
 
-annotate service.Authors with @odata.draft.enabled;
-annotate service.Books with @odata.draft.enabled;
+// annotate service.Authors with @odata.draft.enabled;
+// annotate service.Books with @odata.draft.enabled;
 // annotate service.Authors with {
 //     ID @Common.Label : '{i18n>ID}'
 // };

@@ -1,4 +1,4 @@
-<mvc:View 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:form="sap.ui.layout.form" controllerName="app.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View xmlns:unified="sap.ui.unified" xmlns:filterbar="sap.ui.comp.filterbar" 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:form="sap.ui.layout.form" controllerName="app.controller.View1" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
     
         <content>
@@ -6,6 +6,10 @@
 	      <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
           <Button width="100%" id="newutton" type="Critical" text="Edit Nested Context Binding" press="navToView3" />
           <Button width="100%" id="newutton4" type="Critical" text="Create Nested Context Binding" press="navToView4" />  
+          <unified:FileUploader change="handleUploadPress" uploadOnChange="true" ></unified:FileUploader>
+          <Button
+			text="Upload File"
+			press="handleUploadPress"/>
           <MultiInput id="_IDGenMultiInput1"  valueHelpRequest="openValueHelpSelects" 
           suggestionRows="{
 				path: '/Books'

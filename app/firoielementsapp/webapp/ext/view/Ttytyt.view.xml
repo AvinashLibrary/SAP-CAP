@@ -1,0 +1,7 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="firoielementsapp.ext.view.Ttytyt">
+    <Page id="Ttytyt" title="Ttytyt">
+        <content>
+            <TextArea id="_IDGenTextArea1" value="{name}" />
+        </content>
+    </Page>
+</mvc:View>

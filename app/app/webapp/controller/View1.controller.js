@@ -26,6 +26,26 @@ sap.ui.define([
         return Controller.extend("app.controller.View1", {
             formatter: formatter,
 
+            handleUploadPress:function(evt){
+                var reader = new FileReader();
+                reader.readAsDataURL(evt.getParameter('files')[0]);
+
+                //base64
+                reader.onload = function (e) {
+                    var sContentStream = e.target.result;
+                    var sFileContent = sContentStream.substring(sContentStream.indexOf(",") + 1, sContentStream.length);
+                    this.oPayload = sFileContent.toString();
+                    this.mime = sContentStream.split(";")[0].split(":")[1];
+                }.bind(this);
+
+                  //Array Buffer
+                evt.getParameter('files')[0].arrayBuffer().then((data)=>{
+                    
+                });
+                
+               
+            },
+
             tokenRdemove: function (oEvent) {
                 this._oVHD.getTable().removeSelections();
                 this._oVHD.update()

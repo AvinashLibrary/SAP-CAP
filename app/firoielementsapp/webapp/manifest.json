@@ -91,19 +91,9 @@
                     "target": "AuthorsList"
                 },
                 {
-                    "pattern": "Authors({key}):?query:",
-                    "name": "AuthorsObjectPage",
-                    "target": "AuthorsObjectPage"
-                },
-                {
-                    "pattern": "Books({key}):?query:",
-                    "name": "BooksObjectPage_Books",
-                    "target": "BooksObjectPage_Books"
-                },
-                {
-                    "pattern": "Authors({key})/bonus({key2}):?query:",
-                    "name": "BonusObjectPage_bonus",
-                    "target": "BonusObjectPage_bonus"
+                    "name": "AuthorsTtytyt",
+                    "pattern": "Authors({AuthorsKey}):?query:",
+                    "target": "AuthorsTtytyt"
                 }
             ],
             "targets": {
@@ -114,16 +104,10 @@
                     "options": {
                         "settings": {
                             "entitySet": "Books",
-                           
                             "navigation": {
                                 "Authors": {
                                     "detail": {
-                                        "route": "AuthorsObjectPage"
-                                    }
-                                },
-                                "Books": {
-                                    "detail": {
-                                        "route": "BooksObjectPage_Books"
+                                        "route": "AuthorsTtytyt"
                                     }
                                 }
                             },
@@ -147,6 +131,50 @@
                                         "DataField::books::title": {
                                             "availability": "Default"
                                         }
+                                    },
+                                    "actions": {
+                                        "create": {
+                                            "press": "firoielementsapp.ext.controller.Create.create",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": true,
+                                            "text": "Create Author"
+                                        },
+                                        "sadsads": {
+                                            "press": "firoielementsapp.ext.controller.Dsdsdd.sdsdsd",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "dsadsad"
+                                        },
+                                        "wwdw": {
+                                            "press": "firoielementsapp.ext.controller.Dsds.dsds",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "sdsds"
+                                        },
+                                        "rr": {
+                                            "press": "firoielementsapp.ext.controller.Rr.rr",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "rr"
+                                        },
+                                        "rew": {
+                                            "press": "firoielementsapp.ext.controller.Sd.ff",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "ee"
+                                        },
+                                        "few": {
+                                            "press": "firoielementsapp.ext.controller.Dsds.dsds",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "fefe"
+                                        }
                                     }
                                 },
                                 "books/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
@@ -156,123 +184,56 @@
                                             "name": "NewPage"
                                         }
                                     }
+                                },
+                                "author/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "selectionMode": "Multi",
+                                        "creationMode": {
+                                            "createAtEnd": false
+                                        }
+                                    }
+                                },
+                                "@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                                    "actions": {
+                                        "dsds": {
+                                            "press": "firoielementsapp.ext.controller.Sd.ff",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "ds",
+                                            "position": {
+                                                "placement": ""
+                                            }
+                                        }
+                                    }
+                                },
+                                "@com.sap.vocabularies.UI.v1.LineItem#tableView1": {
+                                    "actions": {
+                                        "dsds": {
+                                            "press": "firoielementsapp.ext.controller.Sd.ff5",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "ds",
+                                            "position": {
+                                                "placement": ""
+                                            }
+                                        }
+                                    }
                                 }
                             },
                             "hideFilterBar": false
                         }
                     }
                 },
-                "AuthorsObjectPage": {
+                "AuthorsTtytyt": {
                     "type": "Component",
-                    "id": "AuthorsObjectPage",
-                    "name": "sap.fe.templates.ObjectPage",
+                    "id": "AuthorsTtytyt",
+                    "name": "sap.fe.core.fpm",
                     "options": {
                         "settings": {
-                            "entitySet": "Authors",
-                            "navigation": {
-                                "bonus": {
-                                    "detail": {
-                                        "route": "BonusObjectPage_bonus"
-                                    }
-                                }
-                            },
-                            "controlConfiguration": {
-                                "bonus/@com.sap.vocabularies.UI.v1.LineItem#Bonus": {
-                                    "tableSettings": {
-                                        "selectionMode": "Multi",
-                                        "type": "ResponsiveTable",
-                                        "creationMode": {
-                                            "createAtEnd": true,
-                                            "name": "Inline"
-                                        },
-                                        "personalization": {
-                                            "column": true,
-                                            "filter": true,
-                                            "sort": true
-                                        },
-                                        "enableExport": false,
-                                        "enableFullScreen": false,
-                                        "enablePaste": false,
-                                        "selectAll": true,
-                                        "quickVariantSelection": {
-                                            "hideTableTitle": false,
-                                            "showCounts": false
-                                        }
-                                    },
-                                    "actions": {
-                                        "creatBonus": {
-                                            "press": "firoielementsapp.ext.controller.ObjectPageScreen.completeSave",
-                                            "visible": true,
-                                            "enabled": true,
-                                            "requiresSelection": false,
-                                            "text": "Create Bonus"
-                                        }
-                                    }
-                                },
-                                "books/@com.sap.vocabularies.UI.v1.LineItem#Books": {
-                                    "tableSettings": {
-                                        "selectionMode": "Multi",
-                                        "type": "ResponsiveTable",
-                                        "creationMode": {
-                                            "createAtEnd": true,
-                                            "name": "Inline"
-                                        },
-                                        "personalization": {
-                                            "column": true,
-                                            "filter": true,
-                                            "sort": true
-                                        },
-                                        "quickVariantSelection": {
-                                            "hideTableTitle": false,
-                                            "showCounts": true
-                                        },
-                                        "condensedTableLayout": false
-                                    },
-                                    "columns": {
-                                        "DataField::descr": {
-                                            "availability": "Default",
-                                            "width": "5rem"
-                                        }
-                                    }
-                                }
-                            },
-                            "sectionLayout": "Page",
-                            "content": {
-                                "footer": {
-                                    "actions": {
-                                        "_saveComplete": {
-                                            "press": "firoielementsapp.ext.controller.ObjectPageScreen.completeSave",
-                                            "visible": true,
-                                            "enabled": true,
-                                            "text": "{i18n>save}"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "BooksObjectPage_Books": {
-                    "type": "Component",
-                    "id": "BooksObjectPage_Books",
-                    "name": "sap.fe.templates.ObjectPage",
-                    "options": {
-                        "settings": {
-                            "entitySet": "Books",
-                            "navigation": {}
-                        }
-                    }
-                },
-                "BonusObjectPage_bonus": {
-                    "type": "Component",
-                    "id": "BonusObjectPage_bonus",
-                    "name": "sap.fe.templates.ObjectPage",
-                    "options": {
-
-                        "settings": {
-                            "entitySet": "Bonus",
-                            "navigation": {}
-
+                            "viewName": "firoielementsapp.ext.view.Ttytyt",
+                            "entitySet": "Authors"
                         }
                     }
                 }

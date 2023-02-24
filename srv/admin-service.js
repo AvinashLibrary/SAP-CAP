@@ -6,8 +6,8 @@ class AdminService extends cds.ApplicationService {
             // await UPDATE (Bonus,book) .with ({ stock: stock -= quantity })
             // UPDATE(req.target).with({ accepted: true })
             console.log(req)
-            let val = await SELECT `ID` .from (Bonus);
-            return val;
+            // let val = await SELECT `ID` .from (Bonus);
+            // return val;
         })
         return super.init()
     }
