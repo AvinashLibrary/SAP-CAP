@@ -5,7 +5,8 @@
 
 	      <Button width="100%" id="newButton" type="Attention" text="Mathias Testing Click here" press="navToView2" />
           <Button width="100%" id="newutton" type="Critical" text="Edit Nested Context Binding" press="navToView3" />
-          <Button width="100%" id="newutton4" type="Critical" text="Create Nested Context Binding" press="navToView4" />  
+          <Button width="100%" id="newutton4" type="Critical" text="Create Nested Context Binding" press="navToView4" />
+          <Button width="100%" id="neswutton4" type="Critical" text="Extra Prop And Performance" press="navToView5" />    
           <unified:FileUploader change="handleUploadPress" uploadOnChange="true" ></unified:FileUploader>
           <Button
 			text="Upload File"

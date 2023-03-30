@@ -91,12 +91,19 @@
                     "target": "AuthorsList"
                 },
                 {
-                    "name": "AuthorsTtytyt",
-                    "pattern": "Authors({AuthorsKey}):?query:",
-                    "target": "AuthorsTtytyt"
+                    "name": "RouteView2",
+                    "pattern": "view2Nav",
+                    "target": "RouteView2"
                 }
             ],
             "targets": {
+                "RouteView2": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Edit",
+                    "viewName": "Edit"
+                },
                 "AuthorsList": {
                     "type": "Component",
                     "id": "AuthorsList",
@@ -104,27 +111,7 @@
                     "options": {
                         "settings": {
                             "entitySet": "Books",
-                            "navigation": {
-                                "Authors": {
-                                    "detail": {
-                                        "route": "AuthorsTtytyt"
-                                    }
-                                }
-                            },
-                            "views": {
-                                "paths": [
-                                    {
-                                        "key": "tableView1",
-                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
-                                        "entitySet": "Books"
-                                    },
-                                    {
-                                        "key": "tableView",
-                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
-                                        "entitySet": "Authors"
-                                    }
-                                ]
-                            },
+                            "navigation": {},
                             "controlConfiguration": {
                                 "@com.sap.vocabularies.UI.v1.LineItem": {
                                     "columns": {
@@ -174,6 +161,20 @@
                                             "enabled": true,
                                             "requiresSelection": false,
                                             "text": "fefe"
+                                        },
+                                        "zx": {
+                                            "press": "firoielementsapp.ext.controller.Dsds.dsds",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "zx"
+                                        },
+                                        "CreateAuthor": {
+                                            "press": "firoielementsapp.ext.controller.Rr.rr",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Create Author"
                                         }
                                     }
                                 },
@@ -182,28 +183,6 @@
                                         "creationMode": {
                                             "createAtEnd": true,
                                             "name": "NewPage"
-                                        }
-                                    }
-                                },
-                                "author/@com.sap.vocabularies.UI.v1.LineItem": {
-                                    "tableSettings": {
-                                        "selectionMode": "Multi",
-                                        "creationMode": {
-                                            "createAtEnd": false
-                                        }
-                                    }
-                                },
-                                "@com.sap.vocabularies.UI.v1.LineItem#tableView": {
-                                    "actions": {
-                                        "dsds": {
-                                            "press": "firoielementsapp.ext.controller.Sd.ff",
-                                            "visible": true,
-                                            "enabled": true,
-                                            "requiresSelection": false,
-                                            "text": "ds",
-                                            "position": {
-                                                "placement": ""
-                                            }
                                         }
                                     }
                                 },
@@ -220,20 +199,32 @@
                                             }
                                         }
                                     }
+                                },
+                                "@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                                    "actions": {
+                                        "rest": {
+                                            "press": "firoielementsapp.ext.controller.Sd.ff",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Create"
+                                        },
+                                        "copy": {
+                                            "press": "firoielementsapp.ext.controller.Dsds.dsds",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": true,
+                                            "text": "Copy",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "rest"
+                                            }
+                                        }
+                                    }
                                 }
                             },
-                            "hideFilterBar": false
-                        }
-                    }
-                },
-                "AuthorsTtytyt": {
-                    "type": "Component",
-                    "id": "AuthorsTtytyt",
-                    "name": "sap.fe.core.fpm",
-                    "options": {
-                        "settings": {
-                            "viewName": "firoielementsapp.ext.view.Ttytyt",
-                            "entitySet": "Authors"
+                            "hideFilterBar": false,
+                            "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
                         }
                     }
                 }

@@ -1,6 +1,9 @@
 <core:FragmentDefinition id="_IDGenFrsagmenst1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns="sap.m">
     <TableSelectDialog selectionChange="onUpdateToken" updateStarted="setTheKeys" growingThreshold="3" updateFinished="setTheKeys" multiSelect="true" rememberSelections="true" growing="true" id="myDialog" noDataText="No Products Found" title="Select Product" search=".handleSearch" confirm=".handleClose" cancel=".handleClose" items="{
-			path: '/Books'			
+			path: '/Books',
+           
+            parameters : {$$sharedRequest:true}
+        			
 		}">
         <ColumnListItem id="_IDGenColumnListsItem1" vAlign="Middle">
             <cells>

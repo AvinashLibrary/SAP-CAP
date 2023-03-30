@@ -161,6 +161,13 @@
                     "target": [
                         "TargetView4"
                     ]
+                },
+                {
+                    "name": "RouteView5",
+                    "pattern": "view5Nav",
+                    "target": [
+                        "TargetView5"
+                    ]
                 }
             ],
             "targets": {
@@ -191,6 +198,13 @@
                     "clearControlAggregation": false,
                     "viewId": "View4",
                     "viewName": "View4"
+                },
+                "TargetView5": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View5",
+                    "viewName": "View5"
                 }
             }
         },

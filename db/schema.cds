@@ -60,11 +60,18 @@ entity Genres : sap.common.CodeList {
 }
 
 entity Bonus : managed {
-  key ID     : Integer;
-      name   : String(3);
-      value  : String(3);
-      accepted:Boolean;
-      author : Association to Authors;
+    key   ID     : Integer;
+          name   : String(3) ;
+          value  : String(3);
+          accepted:Boolean;
+          author : Association to Authors;
+}
+
+entity Foo : managed {
+  ID : Integer;
+  key name : String;
+  virtual age:String @Core.Computed:false;
+  original_age:String;
 }
 
 annotate Bonus with {

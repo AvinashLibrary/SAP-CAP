@@ -5,7 +5,7 @@ sap.ui.define([
 
     return {
         ff: function(oEvent) {
-            MessageToast.show("Custom handler invoked.");
+            this.getOwnerComponent().getRouter().navTo('RouteView2');
         }
     };
 });

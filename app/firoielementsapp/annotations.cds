@@ -1,26 +1,26 @@
 using AdminService as service from '../../srv/admin-service';
 
-// annotate service.Authors with @(UI.SelectionFields : [
-//     name,books.]
-// );
+annotate service.Authors with @(UI.SelectionFields : [
+    name]
+);
 
-// annotate service.Authors with @odata.draft.enabled;
-// annotate service.Books with @odata.draft.enabled;
-// annotate service.Authors with {
-//     ID @Common.Label : '{i18n>ID}'
-// };
+annotate service.Authors with @odata.draft.enabled;
+annotate service.Books with @odata.draft.enabled;
+annotate service.Authors with {
+    ID @Common.Label : '{i18n>ID}'
+};
 
-// annotate service.Authors with {
-//     name @Common.Label : '{i18n>Name}'
-// };
+annotate service.Authors with {
+    name @Common.Label : '{i18n>Name}'
+};
 
-// annotate service.Authors with {
-//     dateOfBirth @Common.Label : '{i18n>dateOfBirth}'
-// };
+annotate service.Authors with {
+    dateOfBirth @Common.Label : '{i18n>dateOfBirth}'
+};
 
-// annotate service.Authors with {
-//     dateOfDeath @Common.Label : '{i18n>dateOfDeath}'
-// };
+annotate service.Authors with {
+    dateOfDeath @Common.Label : '{i18n>dateOfDeath}'
+};
 
 annotate service.Authors with @(
     UI.Facets                     : [
@@ -353,7 +353,7 @@ annotate service.Books with @(
 
 );
 
-annotate AdminService.Bonus with actions {
+annotate AdminService.Books with actions {
     acceptBonus @(
         Core.OperationAvailable             : {$edmJson : {$Eq : [
             {$Path : 'in/accepted'},
